@@ -1,0 +1,5 @@
+{
+    "ConnectionStrings": {
+        "DefaultConnection": "Server=DESKTOP-PSK6K90\\BAIBOLDY;Database=Relax;Trusted_Connection=True;"
+    }
+}
