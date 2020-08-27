@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.IO;
 using System.Linq;
 using System.Threading.Tasks;
+using AutoMapper;
 using KolesaTwo.Contexts;
 using KolesaTwo.Repositories;
 using Microsoft.AspNetCore.Builder;
@@ -32,6 +33,7 @@ namespace KolesaTwo {
             services.AddControllers();
             services.AddDbContext<BaseContext>(options => options.UseSqlServer(_configuration.GetConnectionString("DefaultConnection")));
             services.AddTransient<IUnitOfWork, UnitOfWork>();
+            services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
 
         }
 

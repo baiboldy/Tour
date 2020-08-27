@@ -10,12 +10,12 @@ namespace KolesaTwo.Models {
     public class Place : IMainTable
     {
         [Key]
-        public Guid id { get; set; }
+        public Guid Id { get; set; }
         [Required]
         [MaxLength(500)]
-        public string name { get; set; }
-        [ForeignKey("tourId")]
-        public Tour tour { get; set; }
-        public Guid tourId { get; set; }
+        public string Name { get; set; }
+        [ForeignKey( "TourId" )]
+        public Tour Tour { get; set; }
+        public Guid TourId { get; set; }
     }
 }

@@ -30,9 +30,9 @@ namespace KolesaTwo.Repositories {
             _db.Remove(objectToDelete);
         }
 
-        public ICollection<T> GetByid(Guid id)
+        public T GetById(Guid id)
         {
-           return _db.Where(x => x.id == id).ToList();
+           return _db.Where(x => x.Id == id).ToList().FirstOrDefault();
         }
 
         public ICollection<T> GetAll()
@@ -40,5 +40,14 @@ namespace KolesaTwo.Repositories {
             return _db.AsQueryable().ToList();
         }
 
+        public bool IsExist(Guid id)
+        {
+	        if (id == null)
+	        {
+		        throw new ArgumentNullException(nameof(id));
+	        }
+
+	        return _db.Any(_ => _.Id == id);
+        }
     }
 }

@@ -21,88 +21,88 @@ namespace KolesaTwo.Migrations
 
             modelBuilder.Entity("KolesaTwo.Models.Guide", b =>
                 {
-                    b.Property<Guid>("id")
+                    b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("uniqueidentifier");
 
-                    b.Property<int>("experienceCount")
+                    b.Property<int>("ExperienceCount")
                         .HasColumnType("int");
 
-                    b.Property<string>("name")
+                    b.Property<string>("Name")
                         .IsRequired()
                         .HasColumnType("nvarchar(500)")
                         .HasMaxLength(500);
 
-                    b.Property<Guid>("tourId")
+                    b.Property<Guid>("TourId")
                         .HasColumnType("uniqueidentifier");
 
-                    b.HasKey("id");
+                    b.HasKey("Id");
 
-                    b.HasIndex("tourId");
+                    b.HasIndex("TourId");
 
                     b.ToTable("Guide");
                 });
 
             modelBuilder.Entity("KolesaTwo.Models.Place", b =>
                 {
-                    b.Property<Guid>("id")
+                    b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("uniqueidentifier");
 
-                    b.Property<string>("name")
+                    b.Property<string>("Name")
                         .IsRequired()
                         .HasColumnType("nvarchar(500)")
                         .HasMaxLength(500);
 
-                    b.Property<Guid>("tourId")
+                    b.Property<Guid>("TourId")
                         .HasColumnType("uniqueidentifier");
 
-                    b.HasKey("id");
+                    b.HasKey("Id");
 
-                    b.HasIndex("tourId");
+                    b.HasIndex("TourId");
 
                     b.ToTable("Place");
                 });
 
             modelBuilder.Entity("KolesaTwo.Models.Tour", b =>
                 {
-                    b.Property<Guid>("id")
+                    b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("uniqueidentifier");
 
-                    b.Property<DateTime>("dateFrom")
+                    b.Property<DateTime>("DateFrom")
                         .HasColumnType("datetime2");
 
-                    b.Property<DateTime>("dateTo")
+                    b.Property<DateTime>("DateTo")
                         .HasColumnType("datetime2");
 
-                    b.Property<string>("name")
+                    b.Property<string>("Name")
                         .IsRequired()
                         .HasColumnType("nvarchar(500)")
                         .HasMaxLength(500);
 
-                    b.Property<int>("peopleLimit")
+                    b.Property<int>("PeopleLimit")
                         .HasColumnType("int");
 
-                    b.HasKey("id");
+                    b.HasKey("Id");
 
                     b.ToTable("Tour");
                 });
 
             modelBuilder.Entity("KolesaTwo.Models.Guide", b =>
                 {
-                    b.HasOne("KolesaTwo.Models.Tour", "tour")
-                        .WithMany("guides")
-                        .HasForeignKey("tourId")
+                    b.HasOne("KolesaTwo.Models.Tour", "Tour")
+                        .WithMany("Guides")
+                        .HasForeignKey("TourId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
                 });
 
             modelBuilder.Entity("KolesaTwo.Models.Place", b =>
                 {
-                    b.HasOne("KolesaTwo.Models.Tour", "tour")
-                        .WithMany("places")
-                        .HasForeignKey("tourId")
+                    b.HasOne("KolesaTwo.Models.Tour", "Tour")
+                        .WithMany("Places")
+                        .HasForeignKey("TourId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
                 });

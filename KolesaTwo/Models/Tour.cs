@@ -9,16 +9,16 @@ namespace KolesaTwo.Models {
     public class Tour : IMainTable
     {
         [Key]
-        public Guid id { get; set; }
+        public Guid Id { get; set; }
         [Required]
         [MaxLength(500)]
-        public string name { get; set; }
-        public ICollection<Place> places { get; set; }
+        public string Name { get; set; }
+        public ICollection<Place> Places { get; set; }
         [Required]
-        public DateTime dateFrom { get; set; }
+        public DateTime DateFrom { get; set; }
         [Required]
-        public DateTime dateTo { get; set; }
-        public int peopleLimit { get; set; }
-        public ICollection<Guide> guides { get; set; }
+        public DateTime DateTo { get; set; }
+        public int PeopleLimit { get; set; }
+        public ICollection<Guide> Guides { get; set; }
     }
 }

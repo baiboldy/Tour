@@ -2,7 +2,7 @@
 
 namespace KolesaTwo.Migrations
 {
-    public partial class FixedTour : Migration
+    public partial class FixedTour2 : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {

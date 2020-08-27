@@ -132,3 +132,5 @@ D:\Sharp\KolesaTwo\KolesaTwo\bin\Debug\netcoreapp3.1\zh-Hans\Microsoft.CodeAnaly
 D:\Sharp\KolesaTwo\KolesaTwo\bin\Debug\netcoreapp3.1\zh-Hant\Microsoft.CodeAnalysis.Workspaces.resources.dll
 D:\Sharp\KolesaTwo\KolesaTwo\obj\Debug\netcoreapp3.1\KolesaTwo.csproj.CoreCompileInputs.cache
 D:\Sharp\KolesaTwo\KolesaTwo\obj\Debug\netcoreapp3.1\KolesaTwo.MvcApplicationPartsAssemblyInfo.cache
+D:\Sharp\KolesaTwo\KolesaTwo\bin\Debug\netcoreapp3.1\AutoMapper.dll
+D:\Sharp\KolesaTwo\KolesaTwo\bin\Debug\netcoreapp3.1\AutoMapper.Extensions.Microsoft.DependencyInjection.dll

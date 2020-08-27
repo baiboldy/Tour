@@ -10,7 +10,5 @@ namespace KolesaTwo.Dtos {
         public DateTime DateFrom { get; set; }
         public DateTime DateTo { get; set; }
         public int PeopleLimit { get; set; }
-        public ICollection<Guide> guides { get; set; }
-        public ICollection<Place> places { get; set; }
     }
 }

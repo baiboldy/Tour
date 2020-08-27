@@ -9,7 +9,8 @@ namespace KolesaTwo.Repositories {
         void Create(T t);
         void Update(T t);
         void Delete(Guid id);
-        ICollection<T> GetByid(Guid id);
+        T GetById(Guid id);
         ICollection<T> GetAll();
+        bool IsExist(Guid id);
     }
 }
