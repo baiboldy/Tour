@@ -30,8 +30,8 @@ namespace KolesaTwo.Controllers {
 		[HttpPost]
 		public IActionResult CreateTour( TourForCreation tourCreation ) {
 			var tour = _mapper.Map<Tour>( tourCreation );
-			_uow.Tours.Create( tour );
-			return Ok();
+			var result = _uow.Tours.Create( tour );
+			return Ok(result);
 		}
 
 		[HttpDelete( "{id:guid}" )]
