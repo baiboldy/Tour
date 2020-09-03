@@ -15,8 +15,6 @@ namespace KolesaTwo.Models {
         [MaxLength(500)]
         public string Name { get; set; }
         public int ExperienceCount { get; set; }
-        [ForeignKey( "TourId" )]
-        public Tour Tour { get; set; }
-        public Guid TourId { get; set; }
+        public ICollection<Tour> Tours { get; set; }
     }
 }
