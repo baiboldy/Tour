@@ -36,7 +36,6 @@ namespace KolesaTwo.Contexts {
 
 		public void Dispose() {
 			try {
-				_context.SaveChanges();
 				_context?.Dispose();
 				GC.SuppressFinalize(this);
 			} catch (Exception ex)

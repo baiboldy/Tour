@@ -9,26 +9,31 @@ namespace KolesaTwo.Repositories {
     public class BaseRepository<T> :  IBaseRepository<T> where T : class, IMainTable
     {
         private readonly DbSet<T> _db;
+        private readonly BaseContext _context;
         public BaseRepository(BaseContext context
         )
         {
             _db = context.Set<T>();
+            _context = context;
         }
         public async Task<Guid> Create(T t)
         {
             await _db.AddAsync(t);
+            _context?.SaveChanges();
             return t.Id;
         }
 
         public void Update(T t)
         {
             _db.Update(t);
+            _context?.SaveChanges();
         }
 
         public async Task Delete(Guid id)
         {
             T objectToDelete = await _db.FindAsync(id);
             _db.Remove(objectToDelete);
+            _context?.SaveChanges();
         }
 
         public T GetById(Guid id)

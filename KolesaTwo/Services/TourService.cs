@@ -25,14 +25,13 @@ namespace KolesaTwo.Services {
 		{
 			var tour = _mapper.Map<Tour>( tourLinkDto.TourDto);
 			var tourId = await _uow.Tours.Create(tour);
-			var tourLink = new TourLink()
-			{
-				TourId = tourId,
-				PlaceId = tourLinkDto.PlaceId
-			};
 			foreach (var guideId in tourLinkDto.GuideIds)
 			{
-				tourLink.GuideId = guideId;
+				var tourLink = new TourLink() {
+					TourId = tourId,
+					PlaceId = tourLinkDto.PlaceId,
+					GuideId = guideId
+				};
 				await _uow.TourLink.Create(tourLink);
 			}
 
