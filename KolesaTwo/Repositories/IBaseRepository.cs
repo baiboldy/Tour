@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 namespace KolesaTwo.Repositories {
     public interface IBaseRepository<T>
     {
-        void Create(T t);
+        Guid Create(T t);
         void Update(T t);
         void Delete(Guid id);
         T GetById(Guid id);

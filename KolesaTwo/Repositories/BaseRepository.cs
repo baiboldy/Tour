@@ -14,9 +14,10 @@ namespace KolesaTwo.Repositories {
         {
             _db = context.Set<T>();
         }
-        public void Create(T t)
+        public Guid Create(T t)
         {
             _db.Add(t);
+            return t.Id;
         }
 
         public void Update(T t)
