@@ -19,11 +19,5 @@ namespace KolesaTwo.Models {
         [Required]
         public DateTime DateTo { get; set; }
         public int PeopleLimit { get; set; }
-        [ForeignKey( "GuideId" )]
-        public virtual Guide Guide { get; set; }
-        public Guid? GuideId { get; set; }
-        [ForeignKey( "PlaceId" )]
-        public virtual Place Place { get; set; }
-        public Guid? PlaceId { get; set; }
     }
 }

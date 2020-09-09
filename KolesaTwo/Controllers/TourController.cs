@@ -5,7 +5,9 @@ using System.Threading.Tasks;
 using AutoMapper;
 using KolesaTwo.Contexts;
 using KolesaTwo.Dtos;
+using KolesaTwo.Dtos.Tour;
 using KolesaTwo.Models;
+using KolesaTwo.Services.Interfaces;
 using Microsoft.AspNetCore.Mvc;
 
 namespace KolesaTwo.Controllers {
@@ -14,10 +16,12 @@ namespace KolesaTwo.Controllers {
 	public class TourController : ControllerBase {
 		private readonly IUnitOfWork _uow;
 		private readonly IMapper _mapper;
+		private readonly ITourService _tourService;
 
-		public TourController( IUnitOfWork uow, IMapper mapper ) {
+		public TourController( IUnitOfWork uow, IMapper mapper, ITourService tourService ) {
 			_uow = uow;
 			_mapper = mapper;
+			_tourService = tourService;
 		}
 
 
@@ -28,10 +32,9 @@ namespace KolesaTwo.Controllers {
 		}
 
 		[HttpPost]
-		public IActionResult CreateTour( TourForCreation tourCreation ) {
-			var tour = _mapper.Map<Tour>( tourCreation );
-			var result = _uow.Tours.Create( tour );
-			return Ok(result);
+		public async Task<IActionResult> CreateTour( TourForCreation tourCreation ) {
+			await _tourService.SaveTour(tourCreation);
+			return Ok();
 		}
 
 		[HttpDelete( "{id:guid}" )]
@@ -41,8 +44,8 @@ namespace KolesaTwo.Controllers {
 		}
 
 		[HttpPut( "{id:guid}" )]
-		public IActionResult UpdateTour( Guid id, [FromBody] TourForCreation tourForCreation ) {
-			if (!_uow.Tours.IsExist( id )) {
+		public async Task<IActionResult> UpdateTour( Guid id, [FromBody] TourDto tourForCreation ) {
+			if (!_uow.Tours.IsExist( id ).Result) {
 				return NotFound();
 			}
 
@@ -52,7 +55,7 @@ namespace KolesaTwo.Controllers {
 				var tourToAdd = _mapper.Map<Tour>(tourForCreation);
 				tourToAdd.Id = id;
 
-				_uow.Tours.Create(tourToAdd);
+				await _uow.Tours.Create(tourToAdd);
 
 				var courseToReturn = _mapper.Map<TourDto>(tourToAdd);
 				return CreatedAtRoute("CreateTour", courseToReturn);

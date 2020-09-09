@@ -15,6 +15,5 @@ namespace KolesaTwo.Models {
         [MaxLength(500)]
         public string Name { get; set; }
         public int ExperienceCount { get; set; }
-        public ICollection<Tour> Tours { get; set; }
     }
 }

@@ -3,7 +3,7 @@ using KolesaTwo.Contexts;
 
 namespace KolesaTwo.Dtos
 {
-    public class GuideForCreation
+    public class GuideDto
     {
         public string Name {get; set;}
         public int ExperienceCount {get; set;}

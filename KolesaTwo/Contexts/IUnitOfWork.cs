@@ -10,5 +10,6 @@ namespace KolesaTwo.Contexts {
         IBaseRepository<Tour> Tours { get; }
         IBaseRepository<Place> Places { get; }
         IBaseRepository<Guide> Guides { get; }
+        IBaseRepository<TourLink> TourLink { get; }
     }
 }

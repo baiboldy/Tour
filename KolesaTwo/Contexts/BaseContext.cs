@@ -14,5 +14,6 @@ namespace KolesaTwo.Contexts {
         public DbSet<Tour> Tour { get; set; }
         public DbSet<Guide> Guide { get; set; }
         public DbSet<Place> Place { get; set; }
+        public DbSet<TourLink> TourLink { get; set; }
     }
 }

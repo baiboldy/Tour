@@ -23,11 +23,11 @@ namespace KolesaTwo.Controllers
         public IActionResult GetTour()
         {
             var guides = _uow.Guides.GetAll();
-            return Ok(_mapper.Map<GuideForCreation>(guides));
+            return Ok(_mapper.Map<GuideDto>(guides));
         }
 
         [HttpPost]
-        public IActionResult CreateTour([FromBody] GuideForCreation guide)
+        public IActionResult CreateTour([FromBody] GuideDto guide)
         {
             var guideMapped = _mapper.Map<Guide>(guide);
             _uow.Guides.Create(guideMapped);

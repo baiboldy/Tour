@@ -8,7 +8,7 @@ namespace KolesaTwo.Profiles
     {
         public GuideProfile()
         {
-            CreateMap<GuideForCreation, Guide>();
+            CreateMap<GuideDto, Guide>();
         }
     }
 }

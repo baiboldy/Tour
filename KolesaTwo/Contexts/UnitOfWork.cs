@@ -11,6 +11,7 @@ namespace KolesaTwo.Contexts {
 		private BaseRepository<Tour> _tours;
 		private BaseRepository<Place> _places;
 		private BaseRepository<Guide> _guides;
+		private BaseRepository<TourLink> _tourlink;
 
 		public UnitOfWork( BaseContext context ) {
 			_context = context;
@@ -28,9 +29,13 @@ namespace KolesaTwo.Contexts {
 			get { return _guides ?? ( _guides = new BaseRepository<Guide>( _context ) ); }
 		}
 
+		public IBaseRepository<TourLink> TourLink
+		{
+			get { return _tourlink ?? (_tourlink = new BaseRepository<TourLink>(_context)); }
+		}
+
 		public void Dispose() {
 			try {
-				_context.SaveChanges();
 				_context?.Dispose();
 				GC.SuppressFinalize(this);
 			} catch (Exception ex)
