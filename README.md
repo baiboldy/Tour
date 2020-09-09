@@ -1,3 +1,3 @@
 # Tour
-# Add-Migration
-# Update-Database
+Add-Migration
+Update-Database
