@@ -6,11 +6,11 @@ using System.Threading.Tasks;
 namespace KolesaTwo.Repositories {
     public interface IBaseRepository<T>
     {
-        Guid Create(T t);
+        Task<Guid> Create(T t);
         void Update(T t);
-        void Delete(Guid id);
+        Task Delete(Guid id);
         T GetById(Guid id);
         ICollection<T> GetAll();
-        bool IsExist(Guid id);
+        Task<bool> IsExist(Guid id);
     }
 }

@@ -14,6 +14,5 @@ namespace KolesaTwo.Models {
         [Required]
         [MaxLength(500)]
         public string Name { get; set; }
-        public ICollection<Tour> Tours { get; set; }
     }
 }

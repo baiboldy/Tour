@@ -6,6 +6,8 @@ using System.Threading.Tasks;
 using AutoMapper;
 using KolesaTwo.Contexts;
 using KolesaTwo.Repositories;
+using KolesaTwo.Services;
+using KolesaTwo.Services.Interfaces;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.HttpsPolicy;
@@ -33,6 +35,7 @@ namespace KolesaTwo {
             services.AddControllers();
             services.AddDbContext<BaseContext>(options => options.UseSqlServer(_configuration.GetConnectionString("DefaultConnection")));
             services.AddTransient<IUnitOfWork, UnitOfWork>();
+            services.AddTransient<ITourService, TourService>();
             services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
 
         }

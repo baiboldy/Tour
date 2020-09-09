@@ -4,14 +4,16 @@ using KolesaTwo.Contexts;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace KolesaTwo.Migrations
 {
     [DbContext(typeof(BaseContext))]
-    partial class BaseContextModelSnapshot : ModelSnapshot
+    [Migration("20200909092653_added_link_table_fix")]
+    partial class added_link_table_fix
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -66,6 +68,9 @@ namespace KolesaTwo.Migrations
                     b.Property<DateTime>("DateTo")
                         .HasColumnType("datetime2");
 
+                    b.Property<Guid?>("GuideId")
+                        .HasColumnType("uniqueidentifier");
+
                     b.Property<string>("Name")
                         .IsRequired()
                         .HasColumnType("nvarchar(500)")
@@ -74,7 +79,14 @@ namespace KolesaTwo.Migrations
                     b.Property<int>("PeopleLimit")
                         .HasColumnType("int");
 
+                    b.Property<Guid?>("PlaceId")
+                        .HasColumnType("uniqueidentifier");
+
                     b.HasKey("Id");
+
+                    b.HasIndex("GuideId");
+
+                    b.HasIndex("PlaceId");
 
                     b.ToTable("Tour");
                 });
@@ -92,7 +104,6 @@ namespace KolesaTwo.Migrations
                         .HasColumnType("uniqueidentifier");
 
                     b.Property<Guid?>("TourId")
-                        .IsRequired()
                         .HasColumnType("uniqueidentifier");
 
                     b.HasKey("Id");
@@ -104,6 +115,17 @@ namespace KolesaTwo.Migrations
                     b.HasIndex("TourId");
 
                     b.ToTable("TourLink");
+                });
+
+            modelBuilder.Entity("KolesaTwo.Models.Tour", b =>
+                {
+                    b.HasOne("KolesaTwo.Models.Guide", null)
+                        .WithMany("Tours")
+                        .HasForeignKey("GuideId");
+
+                    b.HasOne("KolesaTwo.Models.Place", null)
+                        .WithMany("Tours")
+                        .HasForeignKey("PlaceId");
                 });
 
             modelBuilder.Entity("KolesaTwo.Models.TourLink", b =>
@@ -118,9 +140,7 @@ namespace KolesaTwo.Migrations
 
                     b.HasOne("KolesaTwo.Models.Tour", "Tour")
                         .WithMany()
-                        .HasForeignKey("TourId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .HasForeignKey("TourId");
                 });
 #pragma warning restore 612, 618
         }

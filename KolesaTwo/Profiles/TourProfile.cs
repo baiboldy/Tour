@@ -11,7 +11,7 @@ namespace KolesaTwo.Profiles {
 		public TourProfile()
 		{
 			CreateMap<Tour, TourDto>();
-			CreateMap<TourForCreation, Tour>();
+			CreateMap<TourDto, Tour>();
 		}
 	}
 }
