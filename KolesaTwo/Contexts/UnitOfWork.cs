@@ -4,14 +4,15 @@ using System.Linq;
 using System.Threading.Tasks;
 using KolesaTwo.Models;
 using KolesaTwo.Repositories;
+using KolesaTwo.Repositories.TourRepository;
 
 namespace KolesaTwo.Contexts {
 	public class UnitOfWork : IUnitOfWork, IDisposable {
 		private BaseContext _context;
-		private BaseRepository<Tour> _tours;
-		private BaseRepository<Place> _places;
-		private BaseRepository<Guide> _guides;
-		private BaseRepository<TourLink> _tourlink;
+		private IBaseRepository<Tour> _tours;
+		private IBaseRepository<Place> _places;
+		private IBaseRepository<Guide> _guides;
+		private ITourRepository _tourlink;
 
 		public UnitOfWork( BaseContext context ) {
 			_context = context;
@@ -29,9 +30,9 @@ namespace KolesaTwo.Contexts {
 			get { return _guides ?? ( _guides = new BaseRepository<Guide>( _context ) ); }
 		}
 
-		public IBaseRepository<TourLink> TourLink
+		public ITourRepository TourLink
 		{
-			get { return _tourlink ?? (_tourlink = new BaseRepository<TourLink>(_context)); }
+			get { return _tourlink ?? (_tourlink = new TourRepository(_context)); }
 		}
 
 		public void Dispose() {

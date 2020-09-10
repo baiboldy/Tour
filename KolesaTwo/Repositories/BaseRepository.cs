@@ -38,7 +38,7 @@ namespace KolesaTwo.Repositories {
 
         public T GetById(Guid id)
         {
-           return _db.Where(x => x.Id == id).ToList().FirstOrDefault();
+	        return _db.Where(x => x.Id == id).ToList().FirstOrDefault();
         }
 
         public ICollection<T> GetAll()
@@ -55,5 +55,6 @@ namespace KolesaTwo.Repositories {
 
 	        return await _db.AnyAsync(_ => _.Id == id);
         }
+
     }
 }

@@ -117,7 +117,7 @@ namespace KolesaTwo.Migrations
                         .HasForeignKey("PlaceId");
 
                     b.HasOne("KolesaTwo.Models.Tour", "Tour")
-                        .WithMany()
+                        .WithMany("tourLink")
                         .HasForeignKey("TourId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();

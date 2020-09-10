@@ -10,8 +10,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace KolesaTwo.Migrations
 {
     [DbContext(typeof(BaseContext))]
-    [Migration("20200909110533_Fix")]
-    partial class Fix
+    [Migration("20200910050609_fixed1")]
+    partial class fixed1
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -119,7 +119,7 @@ namespace KolesaTwo.Migrations
                         .HasForeignKey("PlaceId");
 
                     b.HasOne("KolesaTwo.Models.Tour", "Tour")
-                        .WithMany()
+                        .WithMany("tourLink")
                         .HasForeignKey("TourId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();

@@ -37,6 +37,8 @@ namespace KolesaTwo {
             services.AddTransient<IUnitOfWork, UnitOfWork>();
             services.AddTransient<ITourService, TourService>();
             services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
+            services.AddControllersWithViews().AddNewtonsoftJson(opt =>
+	            opt.SerializerSettings.ReferenceLoopHandling = Newtonsoft.Json.ReferenceLoopHandling.Ignore);
 
         }
 

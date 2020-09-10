@@ -19,5 +19,6 @@ namespace KolesaTwo.Models {
         [Required]
         public DateTime DateTo { get; set; }
         public int PeopleLimit { get; set; }
+        public virtual IList<TourLink> tourLink { get; set; }
     }
 }

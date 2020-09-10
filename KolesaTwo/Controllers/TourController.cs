@@ -25,10 +25,11 @@ namespace KolesaTwo.Controllers {
 		}
 
 
-		[HttpGet]
-		public IActionResult GetTour() {
-			var tours = _uow.Tours.GetAll();
-			return Ok( _mapper.Map<IEnumerable<TourDto>>( tours ) );
+		[HttpGet("{id:guid}")]
+		public async Task<IActionResult> GetTour(Guid id)
+		{
+			var tours = await _uow.TourLink.getByTourId(id);
+			return Ok(_mapper.Map<IEnumerable<TourLinkDto>>(tours));
 		}
 
 		[HttpPost]

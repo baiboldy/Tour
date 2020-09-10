@@ -11,14 +11,14 @@ namespace KolesaTwo.Models {
 		[Key]
 		public Guid Id { get; set; }
 		[ForeignKey("GuideId")]
-		public virtual Guide Guide { get; set; }
+		public Guide Guide { get; set; }
 		public Guid? GuideId { get; set; }
 		[ForeignKey("PlaceId")]
-		public virtual Place Place { get; set; }
+		public Place Place { get; set; }
 		public Guid? PlaceId { get; set; }
 		[ForeignKey("TourId")]
 		[Required]
-		public virtual Tour Tour { get; set; }
+		public Tour Tour { get; set; }
 		public Guid? TourId { get; set; }
 	}
 }
